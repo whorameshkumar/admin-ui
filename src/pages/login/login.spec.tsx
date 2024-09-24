@@ -1,6 +1,19 @@
 import {it, describe, expect} from 'vitest';
 import {render, screen} from '@testing-library/react';
 import LoginPage from './login';
+
+
+beforeAll(() => {
+    window.matchMedia = window.matchMedia || function() {
+      return {
+        matches: false,
+        addListener: function() {},
+        removeListener: function() {}
+      };
+    };
+  });
+  
+
 describe('Login page', () => {
     it('should render with required fields', () => {
         render(<LoginPage/>);
